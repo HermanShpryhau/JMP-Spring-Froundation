@@ -1,13 +1,13 @@
-package com.epam.jmp.springfroundation;
+package com.epam.jmp.springfoundation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JmpSpringFroundationApplication {
+public class JmpSpringFoundationApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JmpSpringFroundationApplication.class, args);
+        SpringApplication.run(JmpSpringFoundationApplication.class, args);
     }
 
 }
