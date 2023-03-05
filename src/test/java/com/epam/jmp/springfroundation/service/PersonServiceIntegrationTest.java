@@ -8,14 +8,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = JmpSpringFoundationApplication.class)
 @Transactional
+@ActiveProfiles("dev")
 public class PersonServiceIntegrationTest {
     @Autowired
     private PersonService personService;
@@ -27,7 +30,7 @@ public class PersonServiceIntegrationTest {
 
         Person savedPerson = personService.save(person);
 
+        assertThat(savedPerson.getId(), notNullValue());
         assertThat(savedPerson.getPersonName(), equalTo(person.getPersonName()));
-        assertThat(personService.findAll().size(), equalTo(1));
     }
 }

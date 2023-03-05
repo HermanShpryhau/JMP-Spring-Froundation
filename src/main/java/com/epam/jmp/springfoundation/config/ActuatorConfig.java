@@ -14,6 +14,9 @@ public class ActuatorConfig {
         return http.authorizeHttpRequests()
                 .requestMatchers("/actuator/**").permitAll()
                 .anyRequest().authenticated()
-                .and().build();
+                .and()
+                .httpBasic()
+                .and()
+                .build();
     }
 }

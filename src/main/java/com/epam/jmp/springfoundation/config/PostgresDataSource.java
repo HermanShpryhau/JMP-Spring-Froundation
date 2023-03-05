@@ -8,15 +8,15 @@ import org.springframework.context.annotation.Profile;
 import javax.sql.DataSource;
 
 @Configuration
-@Profile("dev")
-public class H2DataSourceConfig {
+@Profile("qa")
+public class PostgresDataSource {
     @Bean
     public DataSource dataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.driverClassName("org.h2.Driver");
-        dataSourceBuilder.url("jdbc:h2:mem:jmp-db");
-        dataSourceBuilder.username("SA");
-        dataSourceBuilder.password("");
+        dataSourceBuilder.driverClassName("org.postgresql.Driver");
+        dataSourceBuilder.url("jdbc:postgresql://localhost:5432/jmp-db");
+        dataSourceBuilder.username("jmp-user");
+        dataSourceBuilder.password("12345");
         return dataSourceBuilder.build();
     }
 }
